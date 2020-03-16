@@ -38,6 +38,7 @@
 #include "Uart.c"
 #include "Adc.c"
 #include "Dac.c"
+#include "DACfunctionsfrFinalDoc.c"
 
 #include "VoltageInterpreter.c"
 
@@ -48,21 +49,25 @@ int main(void)
 	uart_init();
 	dac_init();
 
-	int counter = 1;
+	int voltage = 4095;
+	int increasing = 0;
 
 	while (1) {
-		if (!counter) {
-			get_voltage();
-			dac_convert();
-		}
+		dac_convert(4095);
+		get_voltage();
 
-		if (counter < 10000000) {
-			counter++;
+		if (voltage > 1200 && !increasing) {
+			voltage--;
 		}
-		else {
-			counter = 0;
+		else if (voltage < 4095 && increasing){
+			voltage++;
 		}
-
+		else if (voltage == 1200) {
+			increasing = 1;
+		}
+		else if (voltage == 4095) {
+			increasing = 0;
+		}
 	}
 
     return 0;
