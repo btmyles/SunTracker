@@ -35,54 +35,72 @@
 #include <stdio.h>
 #include "fsl_device_registers.h"
 #include "Led.c"
+#include "Button.c"
 #include "Uart.c"
 #include "Adc.c"
 #include "Dac.c"
-//#include "DACfunctionsfrFinalDoc.c"
-
+#include "Clock.c"
 #include "VoltageInterpreter.c"
+
+void calibrate();
 
 int main(void)
 {
 	led_init();
+	button_init();
 	adc_init();
 	uart_init();
 	dac_init();
 	timer_init();
 
-	//int voltage = 4095;
-	//int increasing = 0;
 
-	timer_reset();
  // MotorController functions:
  //rotate_to(int position)
  //move_motor()
 
-	while (1) {
-		//dac_convert(voltage);
-		//get_voltage();
+	// initial calibration
+	calibrate();
+	timer_reset();
 
-		if(timer_isdone() == 1)
+	while (1) {
+
+		if(timer_isdone() || button_ispressed())
 		{
-			led_on('b');
+			calibrate();
 			timer_reset();
 		}
-
-
-/*
-		if (voltage > 0 && !increasing) {
-			voltage--;
-		}
-		else if (voltage < 4095 && increasing){
-			voltage++;
-		}
-		else if (voltage == 0) {
-			increasing = 1;
-		}
-		else if (voltage == 4095) {
-			increasing = 0;
-		}*/
+		get_voltage();
 	}
 
     return 0;
+}
+
+// Calibration sequence
+void calibrate() {
+	int v, i;
+	int highv = 0, highi = 0;
+
+	// turn LED on
+	led_on('r');
+
+	// for each angle
+	for (i=1; i<=5; i++) {
+		// move motor to angle #i
+		//rotate_to(i);
+
+		// check voltage
+		v = get_voltage();
+
+		// store highest voltage location
+		if (v > highv) {
+			highv = v;
+			highi = i;
+		}
+	}
+
+	// move motor back to best position
+	//rotate_to(highi);
+
+	// turn LED off
+	led_off('a');
 }
