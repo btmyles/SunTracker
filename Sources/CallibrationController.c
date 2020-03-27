@@ -52,8 +52,11 @@ int main(void)
 
 	//int voltage = 4095;
 	//int increasing = 0;
-	timer_reset();
 
+	timer_reset();
+ // MotorController functions:
+ //rotate_to(int position)
+ //move_motor()
 
 	while (1) {
 		//dac_convert(voltage);
