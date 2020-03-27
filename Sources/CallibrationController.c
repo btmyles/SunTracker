@@ -48,31 +48,37 @@ int main(void)
 	adc_init();
 	uart_init();
 	dac_init();
+	timer_init();
 
-	int voltage = 4095;
-	int increasing = 0;
+	//int voltage = 4095;
+	//int increasing = 0;
+	timer_reset();
 
 
 	while (1) {
-		dac_convert(voltage);
-		get_voltage();
+		//dac_convert(voltage);
+		//get_voltage();
+
+		if(timer_isdone() == 1)
+		{
+			led_on('b');
+			timer_reset();
+		}
 
 
-
-
-
-		if (voltage > 1200 && !increasing) {
+/*
+		if (voltage > 0 && !increasing) {
 			voltage--;
 		}
 		else if (voltage < 4095 && increasing){
 			voltage++;
 		}
-		else if (voltage == 1200) {
+		else if (voltage == 0) {
 			increasing = 1;
 		}
 		else if (voltage == 4095) {
 			increasing = 0;
-		}
+		}*/
 	}
 
     return 0;
