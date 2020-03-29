@@ -8,19 +8,24 @@
 #include "Led.c"
 #include "Uart.c"
 #include "Dac.c"
-
+int i;
 int increasing = 0;
 int prev_position;
 int degrees;
 int angle;
 
-
-// It is assumed that this function rotates the motor counter-clockwise by 20 degrees with attached solar panel
+void wait()
+{
+	for(i=0; i<10000; i++)
+	{}
+}
+// It is assumed that this function rotates the motor clockwise by 20 degrees with attached solar panel
 void move_motor()
 {
 	for (int voltage = 0; voltage < 4095; voltage++)
 	{
 		dac_convert(voltage);
+		wait();
 		//if (voltage == 1738)
 		//{
 			//break;
@@ -29,6 +34,7 @@ void move_motor()
 	for (int voltage = 4095; voltage > 0; voltage--)
 	{
 		dac_convert(voltage);
+		wait();
 	//	if (voltage == 2738)
 		//	{
 			//	break;
