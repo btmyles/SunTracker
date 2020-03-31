@@ -1,10 +1,12 @@
-/* Sun Tracker main
+/* Sun Tracker UART module
  * Ben Myles and Vanessa McGaw
  * 2020-02-26
+ * Functions to interface the UART module on the FRDM K64F
  * */
 
 #ifndef UART_SEEN
 #define UART_SEEN
+
 #include "fsl_device_registers.h"
 
 void uart_init() {
@@ -16,7 +18,6 @@ void uart_init() {
 
 	PORTB_PCR16 |= PORT_PCR_MUX(3); // Rx
 	PORTB_PCR17 |= PORT_PCR_MUX(3); // Tx
-	//| PORT_PCR_DSE_MASK;
 
 	// Configure UART for 8 bits
 	UART0_C1 = 0;
