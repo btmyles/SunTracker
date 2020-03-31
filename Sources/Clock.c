@@ -1,4 +1,4 @@
-/* Sun Tracker main
+/* Sun Tracker Clock module
  * Ben Myles and Vanessa McGaw
  * 2020-02-26
  * Functions to interact with the Flex Timer Module on the FRDM K64F
