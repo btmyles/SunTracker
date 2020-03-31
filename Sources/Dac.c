@@ -1,6 +1,7 @@
 /* Sun Tracker DAC
  * Ben Myles and Vanessa McGaw
  * 2020-02-26
+ * Functions to interact with the DAC on FRDM K64F
  * */
 
 #ifndef DAC_SEEN
@@ -10,9 +11,6 @@
 void dac_init() {
 	// Enable the clock for DAC0 over AIPS1
 	SIM_SCGC2 |= (1 << SIM_SCGC2_DAC0_SHIFT) | SIM_SCGC2_DAC0_MASK;
-
-	// disable buffer
-	//DAC0_C1 = 0;
 
 	// Enable DAC
 	DAC0_C0 |= 1<<7; // DAC enable
