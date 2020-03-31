@@ -1,6 +1,7 @@
 /* Sun Tracker main
  * Ben Myles and Vanessa McGaw
  * 2020-02-26
+ * Functions to interact with LEDs on FRDM K64F
  * */
 
 #ifndef LED_SEEN
@@ -8,6 +9,7 @@
 
 #include "fsl_device_registers.h"
 
+// Possible values: 'a', 'r', 'b', 'g'
 void led_on(char color) {
 	if (color == 'a' || color == 'g')
 		GPIOE_PCOR |= 0x01 << 26;
@@ -17,6 +19,7 @@ void led_on(char color) {
 		GPIOB_PCOR |= 0x01 << 22;
 }
 
+// Possible values: 'a', 'r', 'b', 'g'
 void led_off(char color) {
 	if (color == 'a' || color == 'g')
 		GPIOE_PSOR |= 0x01 << 26;
@@ -38,9 +41,9 @@ void led_init() {
 	PORTB_PCR22 |= PORT_PCR_MUX(1) | PORT_PCR_DSE_MASK;	//r
 
 	// LED is output
-	GPIOE_PDDR |= 0x01 << 26;							//g
-	GPIOB_PDDR |= 0x01 << 21;							//b
-	GPIOB_PDDR |= 0x01 << 22;							//r
+	GPIOE_PDDR |= 0x01 << 26;	//g
+	GPIOB_PDDR |= 0x01 << 21;	//b
+	GPIOB_PDDR |= 0x01 << 22;	//r
 
 	led_off('a');
 }
