@@ -1,4 +1,4 @@
-/* Sun Tracker main
+/* Sun Tracker LED module
  * Ben Myles and Vanessa McGaw
  * 2020-02-26
  * Functions to interact with LEDs on FRDM K64F
