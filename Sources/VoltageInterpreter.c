@@ -1,6 +1,7 @@
 /* Sun Tracker voltage interpreter
  * Ben Myles and Vanessa McGaw
  * 2020-02-26
+ * Interact with the ADC and UART to read voltage values and print them to the PuTTY terminal
  * */
 
 #include "fsl_device_registers.h"
@@ -13,19 +14,6 @@
 
 void output_voltage(int result) {
 	char result_str[STRLEN];
-
-/*	if (result > 65500) {
-		led_off('a');
-		led_on('g');
-	}
-	else if (result < 200){
-		led_off('a');
-		led_on('r');
-	}
-	else {
-		led_off('a');
-		led_on('b');
-	}*/
 
 	result = result*3300/65535;
 
@@ -44,5 +32,3 @@ int get_voltage() {
 
 	return result;
 }
-
-
