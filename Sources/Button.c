@@ -17,9 +17,4 @@ void button_init() {
 	GPIOC_PDDR &= 0x40 ^ GPIO_PDDR_PDD_MASK;
 }
 
-// return 1 if pressed
-int button_ispressed() {
-	return !GPIOC_PDIR;
-}
-
 #endif
