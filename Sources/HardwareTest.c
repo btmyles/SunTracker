@@ -52,6 +52,7 @@ int main(void)
 		// uart_putchar(uart_getchar());
 		// Read result of conversion
 		result = adc_convert();
+		adc_getvoltage();
 
 
 		if (result == 0xFF) {
@@ -70,5 +71,5 @@ int main(void)
 
     return 0;
 }
-
 */
+

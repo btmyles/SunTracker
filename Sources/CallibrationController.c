@@ -41,6 +41,7 @@
 #include "Dac.c"
 #include "Clock.c"
 #include "VoltageInterpreter.c"
+#include "PositionSensor.c"
 
 void calibrate();
 
@@ -52,6 +53,7 @@ int main(void)
 	uart_init();
 	dac_init();
 	timer_init();
+	positionsensor_init();
 
 
  // MotorController functions:
@@ -85,8 +87,8 @@ void calibrate() {
 
 	// for each angle
 	for (i=1; i<=5; i++) {
-		// move motor to angle #i
-		//rotate_to(i);
+		// move motor to position #i
+		rotate_to(i);
 
 		// check voltage
 		v = get_voltage();
@@ -99,7 +101,7 @@ void calibrate() {
 	}
 
 	// move motor back to best position
-	//rotate_to(highi);
+	rotate_to(highi);
 
 	// turn LED off
 	led_off('a');

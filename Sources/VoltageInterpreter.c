@@ -14,7 +14,7 @@
 void output_voltage(int result) {
 	char result_str[STRLEN];
 
-	if (result > 65500) {
+/*	if (result > 65500) {
 		led_off('a');
 		led_on('g');
 	}
@@ -25,7 +25,7 @@ void output_voltage(int result) {
 	else {
 		led_off('a');
 		led_on('b');
-	}
+	}*/
 
 	result = result*3300/65535;
 

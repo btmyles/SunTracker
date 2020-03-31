@@ -58,7 +58,7 @@ int timer_isdone() {
 	unsigned long long extra = FTM1_CNT;
 
 	// (number of overflows * cycles per overflow + remaining cycles in most recent overflow) * (3/120000/820) converting to ms
-	long time = ((*pOverflowCounter)*0xFFFF + extra)*3/120000/820;
+	long time = ((*pOverflowCounter)*0xFFFF + extra)*3/120000/140; //
 
 	//ms to seconds
 	if ((time / 1000) > 15)
