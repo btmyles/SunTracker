@@ -10,11 +10,15 @@
 #include "Dac.c"
 #include "PositionSensor.c"
 
+// CYCLES can be changed to adjust how long the motor is active while turning.
+// Higher CYCLES value causes the motor to turn more
+#define CYCLES 1000
+
 int degrees;
 int angle;
 
 void wait() {
-	for(int i=0; i<1000; i++);
+	for(int i=0; i<CYCLES; i++);
 }
 
 // It is assumed that this function rotates the motor clockwise by 20 degrees with attached solar panel
