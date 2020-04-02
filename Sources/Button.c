@@ -9,6 +9,13 @@
 
 #include "fsl_device_registers.h"
 
+/**
+ * Purpose: Initialize SW2
+ * Inputs: none
+ * Outputs: none
+ * Called functions:
+ * 		none
+ * */
 void button_init() {
 	// Enable clock
 	SIM_SCGC5 |= (0x01 << 11) | SIM_SCGC5_PORTE_MASK;
@@ -18,7 +25,13 @@ void button_init() {
 	GPIOC_PDDR &= 0x40 ^ GPIO_PDDR_PDD_MASK;
 }
 
-// Return 1 if pressed
+/**
+ * Purpose: Check if SW2 has been pressed
+ * Inputs: none
+ * Outputs: none
+ * Called functions:
+ * 		none
+ * */
 int button_ispressed() {
 	return !GPIOC_PDIR;
 }

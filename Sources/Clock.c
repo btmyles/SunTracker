@@ -14,6 +14,13 @@
 // Very large variable needed to store timer overflows
 unsigned long long * pOverflowCounter;
 
+/**
+ * Purpose: Initialize FTM
+ * Inputs: none
+ * Outputs: none
+ * Called functions:
+ * 		none
+ * */
 void timer_init() {
 	    // Enable clock to the module via
 	    // SIM_SCGC6 for FTM0, FTM1, FTM2
@@ -43,6 +50,13 @@ void timer_init() {
 	    pOverflowCounter = (unsigned long long *) malloc(sizeof(unsigned long long));
 }
 
+/**
+ * Purpose: Reset FTM
+ * Inputs: none
+ * Outputs: none
+ * Called functions:
+ * 		none
+ * */
 void timer_reset() {
 	FTM1_CNTIN = 0;
 	FTM1_CNT = 0;
@@ -50,6 +64,13 @@ void timer_reset() {
 }
 
 // Function returns boolean true if SECONDS has passed
+/**
+ * Purpose: Check if FTM has been running for SECONDS seconds
+ * Inputs: none
+ * Outputs: boolean true if SECONDS has passed. Boolean false if SECONDS has not passed
+ * Called functions:
+ * 		none
+ * */
 int timer_isdone() {
 
 	if ((FTM1_SC>>7) == 1) {

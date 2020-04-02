@@ -9,6 +9,13 @@
 
 #include "fsl_device_registers.h"
 
+/**
+ * Purpose: Initialize UART
+ * Inputs: none
+ * Outputs: none
+ * Called functions:
+ * 		none
+ * */
 void uart_init() {
 	// Enable Clock for UART0
 	SIM_SCGC4 |= SIM_SCGC4_UART0_MASK;
@@ -34,6 +41,13 @@ void uart_init() {
 	UART0_C2 |= UART_C2_RE_MASK;
 }
 
+/**
+ * Purpose: Output one character to UART
+ * Inputs: character value
+ * Outputs: none
+ * Called functions:
+ * 		none
+ * */
 void uart_putchar(char c) {
 	//Poll TDRE
 	int tdre = UART0_S1 >> 7;
@@ -44,6 +58,13 @@ void uart_putchar(char c) {
 	UART0_D = c;
 }
 
+/**
+ * Purpose: Output a string of characters to UART
+ * Inputs: Pointer to character string
+ * Outputs: none
+ * Called functions:
+ * 		Uart.c : uart_putchar
+ * */
 void uart_putstr(char* str) {
 	int i = 0;
 	while (str[i])
@@ -53,6 +74,13 @@ void uart_putstr(char* str) {
 	}
 }
 
+/**
+ * Purpose: Retrieve character input from the UART
+ * Inputs: none
+ * Outputs: character data from UART
+ * Called functions:
+ * 		none
+ * */
 char uart_getchar() {
 	//Poll RDRF
 	while (! (UART0_S1 & 0b00100000 ));

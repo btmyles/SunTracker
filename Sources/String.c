@@ -7,7 +7,13 @@
 #ifndef STRING_SEEN
 #define STRING_SEEN
 
-// Convert an integer to a character array
+/**
+ * Purpose: Convert an integer to a character array
+ * Inputs: string of characters and integer to be converted
+ * Outputs: string of characters holding representation of the integer which was passed as input
+ * Called functions:
+ * 		none
+ * */
 void int2str(char str[], int num) {
     int i, rem, len = 0, n;
 
@@ -24,7 +30,13 @@ void int2str(char str[], int num) {
     str[len] = '\0';
 }
 
-// Clear a character array of all values
+/**
+ * Purpose: clear a character array of all values
+ * Inputs: character pointer to string, length of input string
+ * Outputs: character pointer to empty string
+ * Called functions:
+ * 		none
+ * */
 void zeros(char* str, int length) {
 	for (int i=0; i<length; i++) {
 		str[i] = '\0';

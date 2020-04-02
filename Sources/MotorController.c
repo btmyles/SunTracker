@@ -17,10 +17,25 @@
 int degrees;
 int angle;
 
+/**
+ * Purpose: Wait for a set number of clock cycles
+ * Inputs: none
+ * Outputs: none
+ * Called functions:
+ * 		none
+ * */
 void wait() {
 	for(int i=0; i<CYCLES; i++);
 }
 
+/**
+ * Purpose: Move the motor 20 degrees
+ * Inputs: none
+ * Outputs: none
+ * Called functions:
+ * 		Dac.c : dac_convert
+ * 		MotorController.c : wait
+ * */
 // It is assumed that this function rotates the motor clockwise by 20 degrees with attached solar panel
 // This cannot be tested since the panel is not attached to the motor for the final submission
 void move_motor() {
@@ -34,6 +49,15 @@ void move_motor() {
 	}
 }
 
+/**
+ * Purpose: Decide how many times the motor should rotate 20 degrees
+ * Inputs: integer position number
+ * Outputs: none
+ * Called functions:
+ * 		MotorController.c : move_motor
+ * 		PositionSensor.c : position_get
+ * 		PositionSensor.c : position_set
+ * */
 void rotate_to(int position) {
 	if (position == 1)
 		angle = -40;

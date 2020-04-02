@@ -46,6 +46,23 @@
 
 void calibrate();
 
+/**
+ * Purpose: Main initialization and loop for SunTracker system
+ * Inputs: none
+ * Outputs: Integer representing successful operation
+ * Called functions:
+ * 		Led.c : led_init
+ * 		Button.c : button_init
+ * 		Button.c : button_ispressed
+ * 		Uart.c : uart_init
+ * 		Adc.c : adc_init
+ * 		Dac.c : dac_init
+ * 		Clock.c : timer_init
+ * 		Clock.c : timer_reset
+ * 		PositionSensor.c : positionsensor_init
+ * 		CallibrationController.c : calibrate
+ * 		VoltageInterpreter.c : get_voltage
+ * */
 int main(void)
 {
 	led_init();
@@ -76,7 +93,17 @@ int main(void)
     return 0;
 }
 
-// Calibration sequence
+// 
+/**
+ * Purpose: Execute calibration sequence
+ * Inputs: none
+ * Outputs: none
+ * Called functions:
+ * 		MotorController.c : rotate_to
+ * 		Led.c : led_on
+ * 		Led.c : led_off
+ * 		VoltageInterpreter.c : get_voltage
+ * */
 void calibrate() {
 	int v, i;
 	int highv = 0, highi = 0;

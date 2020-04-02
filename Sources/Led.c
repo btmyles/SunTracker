@@ -9,7 +9,13 @@
 
 #include "fsl_device_registers.h"
 
-// Possible values: 'a', 'r', 'b', 'g'
+/**
+ * Purpose: Turn on LEDs
+ * Inputs: character representing LED color - Possible values: 'a', 'r', 'b', 'g'
+ * Outputs: none
+ * Called functions:
+ * 		none
+ * */
 void led_on(char color) {
 	if (color == 'a' || color == 'g')
 		GPIOE_PCOR |= 0x01 << 26;
@@ -19,7 +25,13 @@ void led_on(char color) {
 		GPIOB_PCOR |= 0x01 << 22;
 }
 
-// Possible values: 'a', 'r', 'b', 'g'
+/**
+ * Purpose: Turn off LEDs
+ * Inputs: character representing LED color - Possible values: 'a', 'r', 'b', 'g'
+ * Outputs: none
+ * Called functions:
+ * 		none
+ * */
 void led_off(char color) {
 	if (color == 'a' || color == 'g')
 		GPIOE_PSOR |= 0x01 << 26;
@@ -29,7 +41,13 @@ void led_off(char color) {
 		GPIOB_PSOR |= 0x01 << 22;
 }
 
-// led_init enables all LEDs
+/**
+ * Purpose: Initialize all LEDs
+ * Inputs: none
+ * Outputs: none
+ * Called functions:
+ * 		Led.c : led_off
+ * */
 void led_init() {
 	// Enable clock
 	SIM_SCGC5 |= (0x01 << 13) | SIM_SCGC5_PORTE_MASK;	//g
