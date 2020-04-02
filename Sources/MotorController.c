@@ -36,7 +36,7 @@ void wait() {
  * 		Dac.c : dac_convert
  * 		MotorController.c : wait
  * */
-// It is assumed that this function rotates the motor clockwise by 20 degrees with attached solar panel
+// It is assumed that this function rotates the motor counter-clockwise by 20 degrees with attached solar panel
 // This cannot be tested since the panel is not attached to the motor for the final submission
 void move_motor() {
 	for (int voltage = 0; voltage < 4095; voltage++) {
