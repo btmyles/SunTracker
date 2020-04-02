@@ -8,7 +8,7 @@
 #define CLOCK_SEEN
 
 // Change this value to affect how long the SunTracker should wait between calibration cycles
-#define SECONDS 15
+#define SECONDS 3600
 #include "fsl_device_registers.h"
 
 // Very large variable needed to store timer overflows
